@@ -62,6 +62,24 @@
                 }
             ],
             "result": {}
+        },
+        {
+            "description": "match the text by regular expression",
+            "id": "FINDX",
+            "name": "FINDX",
+            "parameters": [
+                {
+                    "name": "rawText",
+                    "type": "any"
+                },
+                {
+                    "name": "regExp",
+                    "type": "any"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
         }
     ]
 }
