@@ -64,3 +64,15 @@ export function logMessage(message) {
 
   return message;
 }
+
+/**
+ * match the text by regular expression
+ * @customfunction
+ * @param {string} raw text
+ * @param {string} regular expression text
+ * @returns {string} matched text
+ */
+export function findx(rawText, regExp) {
+  let reg = new RegExp(regExp);
+  return reg.exec(rawText)[0];
+}
