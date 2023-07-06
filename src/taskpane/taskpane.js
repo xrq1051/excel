@@ -10,6 +10,7 @@ Office.onReady(() => {
   document.getElementById("sideload-msg").style.display = "none";
   document.getElementById("app-body").style.display = "flex";
   document.getElementById("run").onclick = run;
+  document.getElementById("open-dialog").onclick = openDialog;
 });
 
 export async function run() {
@@ -32,4 +33,22 @@ export async function run() {
   } catch (error) {
     console.error(error);
   }
+}
+
+let dialog = null;
+function openDialog() {
+  Office.context.ui.displayDialogAsync(
+    "https://localhost:3000/popup.html",
+    { height: 45, width: 25 },
+
+    function (result) {
+      dialog = result.value;
+      dialog.addEventHandler(Office.EventType.DialogMessageReceived, processMessage);
+    }
+  );
+}
+
+function processMessage(arg) {
+  document.getElementById("user-name").innerHTML = arg.message;
+  dialog.close();
 }

@@ -76,6 +76,36 @@
                     <SourceLocation resid="Taskpane.Url"/>
                   </Action>
                 </Control>
+                <Control xsi:type="Button" id="ToggleProtection">
+                  <Label resid="ProtectionButtonLabel" />
+                  <Supertip>
+                    <Title resid="ProtectionButtonLabel" />
+                    <Description resid="ProtectionButtonToolTip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16"/>
+                    <bt:Image size="32" resid="Icon.32x32"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>toggleProtection</FunctionName>
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="ToolSet">
+                  <Label resid="FunctionsToolset"/>
+                  <Supertip>
+                    <Title resid="FunctionsToolset" />
+                    <Description resid="FunctionsToolset" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16"/>
+                    <bt:Image size="32" resid="Icon.32x32"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>functionsToolset</FunctionName>
+                  </Action>
+                </Control>
               </Group>
             </OfficeTab>
           </ExtensionPoint>
@@ -99,10 +129,14 @@
         <bt:String id="GetStarted.Title" DefaultValue="Get started with your sample add-in!"/>
         <bt:String id="CommandsGroup.Label" DefaultValue="Commands Group"/>
         <bt:String id="TaskpaneButton.Label" DefaultValue="Show Taskpane"/>
+        <bt:String id="ProtectionButtonLabel" DefaultValue="Toggle Worksheet Protection" />
+        <bt:String id="FunctionsToolset" DefaultValue="Show functions toolset" />
       </bt:ShortStrings>
       <bt:LongStrings>
         <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded succesfully. Go to the HOME tab and click the 'Show Taskpane' button to get started."/>
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Show a Taskpane"/>
+        <bt:String id="ProtectionButtonToolTip" DefaultValue="Click to protect or unprotect the current worksheet." />
+        <bt:String id="FunctionsToolset" DefaultValue="Click to Show functions toolset." />
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>

@@ -28,6 +28,56 @@ function action(event) {
   event.completed();
 }
 
+async function toggleProtection(args) {
+  try {
+    // eslint-disable-next-line no-undef
+    await Excel.run(async (context) => {
+      const sheet = context.workbook.worksheets.getActiveWorksheet();
+
+      sheet.load("protection/protected");
+      await context.sync();
+
+      if (sheet.protection.protected) {
+        sheet.protection.unprotect();
+      } else {
+        sheet.protection.protect();
+      }
+
+      await context.sync();
+    });
+  } catch (error) {
+    // Note: In a production add-in, you'd want to notify the user through your add-in's UI.
+    Console.error(error);
+  }
+
+  args.completed();
+}
+Office.actions.associate("toggleProtection", toggleProtection);
+
+let dialog = null;
+async function functionsToolset(args) {
+  try {
+    Office.context.ui.displayDialogAsync(
+      "https://localhost:3000/toolset.html",
+      { height: 45, width: 25 },
+      function (result) {
+        dialog = result.value;
+        dialog.addEventHandler(Office.EventType.DialogMessageReceived, processMessage);
+      }
+    );
+  } catch (error) {
+    // Note: In a production add-in, you'd want to notify the user through your add-in's UI.
+    Console.error(error);
+  }
+  args.completed();
+}
+function processMessage(arg) {
+  // eslint-disable-next-line no-undef
+  document.getElementById("user-name1").innerHTML = arg.message;
+  dialog.close();
+}
+Office.actions.associate("functionsToolset", functionsToolset);
+
 function getGlobal() {
   return typeof self !== "undefined"
     ? self

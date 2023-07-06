@@ -25,6 +25,8 @@ module.exports = async (env, options) => {
       taskpane: ["./src/taskpane/taskpane.js", "./src/taskpane/taskpane.html"],
       commands: "./src/commands/commands.js",
       functions: "./src/functions/functions.js",
+      popup: "./src/taskpane/popup.js",
+      toolset: "./src/taskpane/popup.js",
     },
     output: {
       clean: true,
@@ -86,6 +88,16 @@ module.exports = async (env, options) => {
             },
           },
         ],
+      }),
+      new HtmlWebpackPlugin({
+        filename: "popup.html",
+        template: "./src/taskpane/popup.html",
+        chunks: ["polyfill", "popup"],
+      }),
+      new HtmlWebpackPlugin({
+        filename: "toolset.html",
+        template: "./src/taskpane/toolset.html",
+        chunks: ["polyfill", "toolset"],
       }),
     ],
     devServer: {
