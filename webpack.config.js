@@ -26,7 +26,7 @@ module.exports = async (env, options) => {
       commands: "./src/commands/commands.js",
       functions: "./src/functions/functions.js",
       popup: "./src/taskpane/popup.js",
-      toolset: "./src/taskpane/popup.js",
+      toolset: "./src/taskpane/toolset.js",
     },
     output: {
       clean: true,

@@ -38,7 +38,7 @@ export async function run() {
 let dialog = null;
 function openDialog() {
   Office.context.ui.displayDialogAsync(
-    "https://localhost:3000/popup.html",
+    "popup.html",
     { height: 45, width: 25 },
 
     function (result) {
