@@ -57,10 +57,15 @@ Office.actions.associate("toggleProtection", toggleProtection);
 let dialog = null;
 async function functionsToolset(args) {
   try {
-    Office.context.ui.displayDialogAsync("toolset.html", { height: 45, width: 25 }, function (result) {
-      dialog = result.value;
-      dialog.addEventHandler(Office.EventType.DialogMessageReceived, processMessage);
-    });
+    Office.context.ui.displayDialogAsync(
+      // eslint-disable-next-line no-undef
+      document.location.origin + "/" + "toolset.html",
+      { height: 45, width: 25 },
+      function (result) {
+        dialog = result.value;
+        dialog.addEventHandler(Office.EventType.DialogMessageReceived, processMessage);
+      }
+    );
   } catch (error) {
     // Note: In a production add-in, you'd want to notify the user through your add-in's UI.
     Console.error(error);
